@@ -6,14 +6,26 @@ import java.util.ArrayList;
 public  abstract class Animals {
 
     public String type;
+
     protected String name;
     protected int age;
-    protected List<String> commands;
 
-    public Animals(String name, int age) {
+    protected String commands;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+    public void setCommands(String commands) {
+        this.commands = commands;
+    }
+     public Animals(String name, int age, String commands) {
         this.name = name;
         this.age = age;
-        this.commands = new ArrayList<>();
+        this.commands = commands;
         this.type = this.getClass().getSimpleName();
     }
 

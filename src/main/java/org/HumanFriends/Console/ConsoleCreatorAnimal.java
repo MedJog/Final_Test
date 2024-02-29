@@ -1,8 +1,10 @@
 package org.HumanFriends.Console;
 
+import org.HumanFriends.Model.Animals;
+
 import java.util.Scanner;
 
-public class ConsoleCreatorAnimal {
+public class ConsoleCreatorAnimal extends Animals {
     private String type = String.valueOf(AnimalType.getType(Integer.parseInt(prompt("Введите тип животного \n1 - кошка " +
             "\n2 - собака " +
             "\n3 - хомяк " +
@@ -14,7 +16,8 @@ public class ConsoleCreatorAnimal {
     private String commands = prompt("Введите команды: ");
 
     public ConsoleCreatorAnimal() {
-    }
+        super();
+    };
     public String getType() {
         return type;
     }

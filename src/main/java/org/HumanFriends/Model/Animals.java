@@ -12,6 +12,9 @@ public  abstract class Animals {
 
     protected String commands;
 
+    public Animals() {
+
+    }
     public void setName(String name) {
         this.name = name;
     }

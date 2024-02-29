@@ -25,7 +25,12 @@ public  abstract class Animals {
     public void setCommands(String commands) {
         this.commands = commands;
     }
-     public Animals(String name, int age, String commands) {
+
+    public String getCommands() {
+        return commands;
+    }
+
+    public Animals(String name, int age, String commands) {
         this.name = name;
         this.age = age;
         this.commands = commands;

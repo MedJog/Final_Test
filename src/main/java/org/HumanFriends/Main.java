@@ -122,13 +122,14 @@ public static String toLearnNewCommands(Animals animal){
                 }
                 // обучить животное новым командам
                 case 4 -> {
-                    System.out.print("Введите индекс животного (число от 0 до" + dataBaseAnimals.size() + "): ");
+                    System.out.print("Введите индекс животного (число от 0 до " + dataBaseAnimals.size() + "): ");
                     int index = in.nextInt();
                     Animals myAnimal = searchAnimal(dataBaseAnimals, index);
                     //toLearnNewCommands(myAnimal);
                     myAnimal.setCommands(toLearnNewCommands(myAnimal));
                     //System.out.println(myAnimal.displayInfo());
                     dataBaseAnimals.set(index, myAnimal);
+                    System.out.println("Животное выучило новые команды");
                     System.out.println("**************************************************************************");
                 }
                 // выход
@@ -137,10 +138,6 @@ public static String toLearnNewCommands(Animals animal){
             }
         }
     }
-
-
-
-
 
 }
 

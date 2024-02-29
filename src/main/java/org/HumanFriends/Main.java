@@ -3,8 +3,11 @@ package org.HumanFriends;
 import org.HumanFriends.Console.ConsoleCreatorAnimal;
 import org.HumanFriends.Model.*;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
+
+import static org.HumanFriends.Model.Counter.counter;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,37 +28,54 @@ public class Main {
                 "2 - Добавить новое животное.\n" +
                 "3-  Показать список команд животного.\n" +
                 "4 - Обучить животное новым командам.\n" +
-                "0 - Выход.");
+                "5 - Показать общее количество животных.\n" +
+                "0 - Выход.\n");
     }
 
     // создание исходного списка животных
     public static LinkedList CreateNewDataBase(){
         LinkedList<Animals> animals = new LinkedList<>();
-        Cats cat1 = new Cats("Муся", 2, "мурчит ест спит" );
-        Cats cat2 = new Cats("Барсик", 3, "мурчит ест спит охотится" );
-        Dogs dog1 = new Dogs("Шарик", 3, "голос лапа апорт" );
-        Dogs dog2 = new Dogs("Дружок", 5, "голос лапа апорт" );
-        Hamsters hamster1 = new Hamsters("Хома", 1, "ест спит" );
-        Hamsters hamster2 = new Hamsters("Фима", 2, "ест спит" );
-        Horses horse1 = new Horses("Моро", 8, "аллюр рысь шаг");
-        Horses horse2 = new Horses("Луна", 5, "кентер аллюр рысь");
-        Camels camel1 = new Camels("Фелиция", 5, "ест спит ходит плюёт");
-        Camels camel2 = new Camels("Гаррисон", 3, "ест спит  плюёт");
-        Donkeys donkey1 = new Donkeys("Иа-Иа", 4, "ест спит ходит");
-        Donkeys donkey2 = new Donkeys("Фуа-Гра", 5, "ест спит ходит");
-        animals.add(cat1);
-        animals.add(cat2);
-        animals.add(dog1);
-        animals.add(dog2);
-        animals.add(hamster1);
-        animals.add(hamster2);
-        animals.add(horse1);
-        animals.add(horse2);
-        animals.add(camel1);
-        animals.add(camel2);
-        animals.add(donkey1);
-        animals.add(donkey2);
-    return animals;
+        try (Counter counter = new Counter()) {
+            Cats cat1 = new Cats("Муся", 2, "мурчит ест спит");
+            Cats cat2 = new Cats("Барсик", 3, "мурчит ест спит охотится");
+            Dogs dog1 = new Dogs("Шарик", 3, "голос лапа апорт");
+            Dogs dog2 = new Dogs("Дружок", 5, "голос лапа апорт");
+            Hamsters hamster1 = new Hamsters("Хома", 1, "ест спит");
+            Hamsters hamster2 = new Hamsters("Фима", 2, "ест спит");
+            Horses horse1 = new Horses("Моро", 8, "аллюр рысь шаг");
+            Horses horse2 = new Horses("Луна", 5, "кентер аллюр рысь");
+            Camels camel1 = new Camels("Фелиция", 5, "ест спит ходит плюёт");
+            Camels camel2 = new Camels("Гаррисон", 3, "ест спит  плюёт");
+            Donkeys donkey1 = new Donkeys("Иа-Иа", 4, "ест спит ходит");
+            Donkeys donkey2 = new Donkeys("Фуа-Гра", 5, "ест спит ходит");
+            animals.add(cat1);
+            counter.add();
+            animals.add(cat2);
+            counter.add();
+            animals.add(dog1);
+            counter.add();
+            animals.add(dog2);
+            counter.add();
+            animals.add(hamster1);
+            counter.add();
+            animals.add(hamster2);
+            counter.add();
+            animals.add(horse1);
+            counter.add();
+            animals.add(horse2);
+            counter.add();
+            animals.add(camel1);
+            counter.add();
+            animals.add(camel2);
+            counter.add();
+            animals.add(donkey1);
+            counter.add();
+            animals.add(donkey2);
+            counter.add();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return animals;
     }
 
     // вывод списка животных
@@ -103,12 +123,14 @@ public static String toLearnNewCommands(Animals animal){
                 case 1 -> {
                     System.out.println("Наши животные:");
                     showDataBase(dataBaseAnimals);
+                    System.out.println("Общее количество животных: " + counter);
                     System.out.println("**************************************************************************");
                 }
                 // добавить новое животное
                 case 2 -> {
                     dataBaseAnimals.add(CreateAnimal());
                     //showDataBase(dataBaseAnimals);
+                    counter++;
                     System.out.println("Животное добавлено в базу данных.");
                     System.out.println("**************************************************************************");
                 }
@@ -132,6 +154,7 @@ public static String toLearnNewCommands(Animals animal){
                     System.out.println("Животное выучило новые команды");
                     System.out.println("**************************************************************************");
                 }
+                case 5 -> System.out.println(counter);
                 // выход
                 case 0 -> flag = false;
                 default -> System.out.println("такого варианта нет");

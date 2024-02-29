@@ -1,0 +1,177 @@
+1. Используя команду cat в терминале операционной системы Linux, создать
+два фаи?ла Домашние животные (заполнив файл собаками, кошками,
+хомяками) и Вьючные животными заполнив файл Лошадьми, верблюдами и
+ослы), а затем объединить их. Просмотреть содержимое созданного фаи?ла.
+Переименовать фаи?л, дав ему новое имя (Друзья человека).
+
+
+user@u1:~$ cat > Pets.txt
+Dogs  
+Cats
+Hamsters  
+
+user@u1:~$ cat > Pack_Animals.txt
+Horses
+Camels
+Donkeys
+
+user@u1:~$ cat Pets.txt Pack_Animals.txt > newfile.txt
+
+user@u1:~$ ls
+Desktop  Documents  Downloads  lws  Music  newfile.txt  Pack_Animals.txt  Pets.txt  Pictures  Public  snap  Templates  Videos
+
+user@u1:~$ cat newfile.txt
+Dogs
+Cats
+Hamsters
+Horses
+Camels
+Donkeys
+
+user@u1:~$ mv newfile.txt Human_Friends.txt
+user@u1:~$ ls
+Desktop  Documents  Downloads  Human_Friends.txt  lws  Music  Pack_Animals.txt  Pets.txt  Pictures  Public  snap  Templates  Videos
+
+
+2. Создать директорию, переместить файл туда.
+
+user@u1:~$ mkdir animals
+user@u1:~$ ls
+animals  Desktop  Documents  Downloads  Human_Friends.txt  lws  Music  Pack_Animals.txt  Pets.txt  Pictures  Public  snap  Templates  Videos
+
+user@u1:~$ tree
+.
++-- animals
++-- Desktop
++-- Documents
+...
+28 directories, 6 files
+
+user@u1:~$ mv Human_Friends.txt animals
+user@u1:~$ cd animals
+user@u1:~/animals$ ls
+Human_Friends.txt
+
+
+3. Подключить дополнительный репозиторий MySQL. Установить любой пакет
+из этого репозитория.
+
+user@u1:~$ sudo apt update
+Сущ:1 http://ge.archive.ubuntu.com/ubuntu jammy InRelease...
+
+user@u1:~$ sudo apt install mysql-server  
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+
+user@u1:~$ sudo mysql
+Welcome to the MySQL monitor...  
+
+mysql> 
+mysql> exit
+Bye
+user@u1:~$ 
+
+4. Установить и удалить deb-пакет с помощью dpkg.
+
+user@u1:~$ sudo apt-get download zip
+user@u1:~$ ls
+animals  Documents  lws    Pack_Animals.txt  Pictures  snap       Videos
+Desktop  Downloads  Music  Pets.txt          Public    Templates  zip_3.0-12build2_amd64.deb
+
+user@u1:~$ sudo dpkg -i  zip_3.0-12build2_amd64.deb
+Выбор ранее не выбранного пакета zip.
+(Чтение базы данных … на данный момент установлено 230347 файлов и каталогов.)
+Подготовка к распаковке zip_3.0-12build2_amd64.deb …
+Распаковывается zip (3.0-12build2) …
+Настраивается пакет zip (3.0-12build2) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+
+user@u1:~$ zip --help
+Copyright (c) 1990-2008 Info-ZIP - Type 'zip "-L"' for software license.
+Zip 3.0 (July 5th 2008). Usage:...
+
+user@u1:~$ sudo dpkg -r zip
+(Чтение базы данных … на данный момент установлен 230361 файл и каталог.)
+Удаляется zip (3.0-12build2) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+user@u1:~$ zip --help
+bash: /usr/bin/zip: Нет такого файла или каталога
+
+
+
+
+
+
+
+5. Выложить историю команд в терминале ubuntu
+Задание 1.
+ 1124  cat > Pets.txt
+ 1125  cat > Pack_Animals.txt
+ 1126  cat Pets.txt Pack_Animals.txt > newfile.txt
+ 1127  cat nemfile.txt
+ 1128  cat Pets.txt
+ 1129  cat Pack_Animals.txt
+ 1130  ls
+ 1131  cat newfile.txt
+ 1132  mv newfile.txt Human_Friends.txt
+ 1133  ls
+
+Задание 2.
+ 1134  mkdir animals
+ 1135  ls
+ 1136  tree
+ 1137  mv Human_Friends.txt animals
+ 1138  cd animals
+ 1139  ls
+
+Задание 3.
+
+1193  sudo apt update
+1194  sudo apt install mysql-server  
+1195  sudo mysql
+
+Задание 4.
+ 1166  sudo apt-get download zip
+ 1167  ls
+ 1168  sudo dpkg -i  zip_3.0-12build2_amd64.deb
+ 1169  zip --help
+ 1170  sudo dpkg -r zip
+ 1171  zip --help
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mysql-client-8.0                           8.0.36-0ubuntu0.22.04.1                 amd64        MySQL database client binaries
+
+ii  mysql-client-core-8.0                      8.0.36-0ubuntu0.22.04.1                 amd64        MySQL database core client binaries
+
+ii  mysql-common                               5.8+1.0.8                               all          MySQL database common files, e.g. /etc/mysq>
+
+ii  mysql-server                               8.0.36-0ubuntu0.22.04.1                 all          MySQL database server (metapackage dependin>
+
+ii  mysql-server-8.0                           8.0.36-0ubuntu0.22.04.1                 amd64        MySQL database server binaries and system d>
+
+ii  mysql-server-core-8.0      
